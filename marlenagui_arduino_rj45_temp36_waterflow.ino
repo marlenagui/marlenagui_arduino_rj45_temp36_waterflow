@@ -41,7 +41,7 @@ int noAvg = 0;
 
 long lastConnectionTime = 0;        // last time you connected to the server, in milliseconds
 long lastReadingTime = 0;           // last time you read
-long lastReadWaterFlow = 0;                   // last time you read the water flow
+long lastReadWaterFlow = 0;         // last time you read the water flow
 boolean lastConnected = false;      // state of the connection last time through the main loop
 const int postingInterval = 10000;  // delay between updates to Pachube.com
 const int readingInterval = 10000;  // delay before reading again
@@ -91,11 +91,11 @@ void loop() {
     // Because this loop may not complete in exactly 1 second intervals we calculate the number of milliseconds that have passed since the last execution and use
     // that to scale the output. the calibrationFactor to scale the output based on the number of pulses per second per units of measure (litres/minute in
     // this case) coming from the sensor is applied on the web side.
-    Serial.print("Pulse since last time:"); // Output separator
-    Serial.println(pulsecount);
+    //Serial.print("Pulse since last time:"); // Output separator
+    //Serial.println(pulsecount);
     pulseCount = ((1000.0 / (millis() - lastReadWaterFlow)) * pulseCount) 
-    Serial.print("Pulse per seconde: ");
-    Serial.println(pulseCount);
+    //Serial.print("Pulse per seconde: ");
+    //Serial.println(pulseCount);
     
     // Enable the interrupt again now that we've finished sending output
     attachInterrupt(WaterFlowInterrupt, pulseCounter, FALLING);
